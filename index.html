@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free 3-call teardown | Griffiths LLC</title>
+<meta name="description" content="Send 3 recorded sales calls. Within 5 business days, see what your buyers say when they decide and which of those things your homepage and pricing page never say. There is no charge and no deck.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+/* Griffiths LLC Brand Guide SOP v2 (Sept 2026), followed to the letter: the application's palette, Playfair / DM Sans /
+   DM Mono, 860px content column with 48px side padding (24px under 680px), sections split by a 1px Border line and
+   52px of space, sticky masthead with a 1px Border bottom line, one CTA block at the end. No gradients, no shadows,
+   no stock photos, no icon set. Layout order after poweredbysearch.com's homepage. */
+:root {
+  --bg:#0a0606; --panel:#17100c; --panel-2:#211713; --border:#3a2418;
+  --text:#f4e8dc; --tan:#b89a80; --dim:#7a5c46;
+  --accent:#CC5500; --accent-2:#E67E22; --ok:#94d82d; --coral:#E0484D;
+  --serif:"Playfair Display", Georgia, serif; --sans:"DM Sans", Inter, Helvetica, Arial, sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); font-size:17px; line-height:1.75; -webkit-font-smoothing:antialiased; }
+a { color:var(--accent-2); }
+.wrap { max-width:956px; margin:0 auto; padding:0 48px; }          /* 860px content + 2 x 48px */
+
+/* type (brand guide 03) */
+h1, h2, h3 { font-family:var(--serif); color:var(--text); margin:0; }
+h1 { font-weight:900; font-size:clamp(38px, 6vw, 64px); line-height:1.08; letter-spacing:-.02em; }
+h1 em { font-style:italic; color:var(--accent); }                 /* the one italic phrase in Burnt Orange */
+h2 { font-weight:700; font-size:clamp(22px, 3vw, 30px); line-height:1.2; }
+h2 em { font-style:italic; }
+h3 { font-weight:700; font-size:clamp(19px, 2.2vw, 22px); line-height:1.3; }
+p, li { margin:0 0 16px; font-size:17px; color:rgba(244,232,220,.88); }
+.lede { font-weight:300; font-size:19px; line-height:1.65; color:var(--tan); }
+.kicker { display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+/* hairline section label (pattern): DM Mono label with a Border line running to the right edge */
+.label { display:flex; align-items:center; gap:14px; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--tan); margin-bottom:24px; }
+.label::after { content:""; flex:1; height:1px; background:var(--border); }
+.meta { font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); }
+.num { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }   /* "01." numbered entries */
+
+/* buttons: one primary (Burnt Orange) per view; the rest are quiet */
+.btn { display:inline-flex; align-items:center; justify-content:center; background:var(--accent); color:#0a0606; font-family:var(--sans); font-weight:600; font-size:16px; text-decoration:none; padding:15px 26px; border-radius:6px; }
+.btn:hover { background:var(--accent-2); }
+.btn.ghost { background:transparent; color:var(--text); border:1px solid var(--border); }
+.btn.ghost:hover { border-color:var(--accent-2); background:transparent; }
+.link { font-weight:600; text-decoration:none; }
+.link:hover { text-decoration:underline; }
+
+/* masthead: sticky on Black, 1px Border bottom line; the globe keeps clear space equal to its own diameter (28px) */
+.progress { position:fixed; top:0; left:0; height:3px; background:var(--accent); width:0; z-index:20; }
+header.top { position:sticky; top:0; z-index:10; background:var(--bg); border-bottom:1px solid var(--border); }
+header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:84px; }
+.lockup { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.lockup img { width:28px; height:28px; }
+.lockup span { font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--text); }
+nav.links { display:flex; align-items:center; gap:24px; margin-left:28px; }
+nav.links a { color:var(--tan); font-size:14px; text-decoration:none; }
+nav.links a:hover { color:var(--text); }
+nav.links .btn { color:var(--text); padding:9px 16px; font-size:14px; }
+
+/* sections: Black, split by a 1px Border line and 52px of space */
+section { padding:52px 0; border-top:1px solid var(--border); }
+section.first { border-top:0; }
+
+/* hero */
+.hero { padding-top:64px; }
+.hero .grid { display:grid; grid-template-columns:1.2fr .8fr; gap:48px; align-items:center; }
+.hero .lede { margin-top:20px; }
+.hero .actions { margin-top:26px; }
+.stats { display:grid; gap:0; }
+.stat { padding:16px 0; border-top:1px solid var(--border); }
+.stat:first-child { border-top:0; padding-top:0; }
+.stat .big { font-family:var(--serif); font-weight:900; font-size:40px; line-height:1.1; color:#fff; }   /* hero stat */
+.stat .big b { color:var(--accent); font-weight:900; }                                                  /* unit in Burnt Orange */
+.stat p { margin:6px 0 0; }
+
+/* the recorders strip: tags as Panel chips in Orange */
+.strip { text-align:center; }
+.strip p { color:var(--tan); margin-bottom:14px; }
+.chips { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.chip { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-2); background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:6px 12px; }
+
+/* numbered steps */
+.steps { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:32px; }
+.step .num { font-size:28px; display:block; margin-bottom:8px; }
+.step h3 { margin-bottom:10px; }
+
+/* framework section ("Meaning" treatment): Panel cards, 1px Border edges, Burnt Orange kicker, diamond bullets */
+.cards { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-top:28px; }
+.card { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:22px 24px; }
+.card p { margin:0; padding-left:20px; position:relative; }
+.card p::before { content:"\25C6"; position:absolute; left:0; top:0; font-size:8px; line-height:2.9; color:var(--accent); }
+/* pull quote: White text, 4px Burnt Orange left border, on Black */
+.pull { margin:32px 0 0; padding:4px 0 4px 22px; border-left:4px solid var(--accent); font-family:var(--serif); font-style:italic; font-size:24px; line-height:1.45; color:var(--text); }
+
+/* contrast columns: left "bad" in Coral with x marks, right "good" in Orange with green checks */
+.contrast { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
+.col { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:22px 24px; }
+.colh { font-family:var(--mono); font-weight:500; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:14px; }
+.col.bad .colh { color:var(--coral); } .col.good .colh { color:var(--accent-2); }
+.col ul { list-style:none; padding:0; margin:0; }
+.col li { position:relative; padding-left:24px; margin-bottom:10px; }
+.col.bad li::before { content:"\2715"; position:absolute; left:0; color:var(--coral); }
+.col.good li::before { content:"\2713"; position:absolute; left:0; color:var(--ok); }
+
+/* callout: Panel-2, 3px Burnt Orange left border, White text, Burnt Orange DM Mono label */
+.callout { background:var(--panel-2); border-left:3px solid var(--accent); border-radius:6px; padding:32px 36px; }
+.callout p { margin-top:14px; }
+
+/* method rows */
+.row { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; padding:36px 0; border-top:1px solid var(--border); }
+.row.first { border-top:0; padding-top:8px; }
+.row h3 { margin-bottom:12px; }
+.row ul { list-style:none; padding:0; margin:12px 0 0; }
+.row li { position:relative; padding-left:24px; margin-bottom:10px; }
+.row li::before { content:"\2192"; position:absolute; left:0; color:var(--accent); }   /* callout bullet */
+/* example box: Panel background, 1px Border rule, Tan DM Mono label, White text */
+.example { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:22px 24px; }
+.example .h { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--tan); border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:12px; display:flex; justify-content:space-between; gap:10px; }
+.example .line { display:grid; grid-template-columns:30px 1fr; gap:8px; padding:8px 0; border-bottom:1px solid var(--border); }
+.example .line:last-of-type { border-bottom:0; }
+.example .line p { margin:0; color:var(--text); }
+.example .line .num { font-size:17px; line-height:1.75; }
+.example .x { color:var(--coral); } .example .ok { color:var(--ok); }
+.example .vs { display:grid; grid-template-columns:1fr; gap:12px; }
+.example .vs div { border:1px solid var(--border); border-radius:6px; padding:12px 14px; background:var(--bg); }
+.example .vs .t { font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:6px; }
+.example .vs .bad .t { color:var(--coral); } .example .vs .good .t { color:var(--accent-2); } .example .vs .good .t i { color:var(--ok); font-style:normal; }
+.example .vs p { margin:0; color:var(--text); }
+.example .meta { margin-top:12px; }
+
+/* the letter */
+.letter .sig { font-family:var(--serif); font-style:italic; font-size:22px; color:var(--text); margin-top:22px; }
+
+/* the one CTA block: Burnt Orange background, Black text, link in DM Mono with a 2px Black underline, centered */
+.cta { background:var(--accent); color:#0a0606; text-align:center; padding:56px 24px; }
+.cta h2 { color:#0a0606; max-width:760px; margin:0 auto; }
+.cta p { color:#0a0606; margin:14px auto 0; max-width:620px; }
+.cta .go { margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.cta a { font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#0a0606; text-decoration:none; border-bottom:2px solid #0a0606; padding-bottom:3px; }
+
+/* footer: the lockup centered next to the tagline */
+footer { border-top:1px solid var(--border); padding:44px 0 52px; text-align:center; }
+footer .lockup { justify-content:center; display:inline-flex; margin:28px 0 0; }
+footer .promise { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--text); margin:14px 0 0; }
+footer .cols { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
+footer .cols a { font-size:14px; color:var(--tan); text-decoration:none; }
+footer .meta { margin-top:18px; }
+
+@media (max-width: 900px) {
+  nav.links a:not(.btn) { display:none; }
+  .hero .grid, .row, .contrast { grid-template-columns:1fr; gap:28px; }
+  .steps, .cards { grid-template-columns:1fr; }
+}
+@media (max-width: 680px) {
+  .wrap { padding:0 24px; }
+  .hero { padding-top:44px; }
+  .callout { padding:26px 22px; }
+  .stat .big { font-size:34px; }
+  .btn { width:100%; }
+  nav.links .btn { width:auto; padding:8px 12px; font-size:13px; }
+  .example .h { flex-direction:column; gap:2px; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="lockup" href="#top" aria-label="Griffiths LLC">
+      <img src="favicon.svg" alt="">
+      <span>Griffiths LLC</span>
+    </a>
+    <nav class="links">
+      <a href="#how">How it works</a>
+      <a href="#get">What you get</a>
+      <a href="#fit">Who it is for</a>
+      <a href="#why">Why it is free</a>
+      <a class="btn ghost" href="#start">Get the free teardown</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. Hero -->
+  <section class="hero first">
+    <div class="wrap grid">
+      <div>
+        <span class="kicker">For B2B SaaS founders in IT and tech</span>
+        <h1>Your demo pipeline is not a traffic problem. It is a <em>hesitation problem.</em></h1>
+        <p class="lede">I help B2B SaaS companies in IT and tech turn the traffic they already have into demos. I find what your buyers hesitate on in your own sales calls, and I rewrite your pages around it.</p>
+        <p>Here is how the offer works. Send me 3 of your recorded sales calls. Within 5 business days, you get back what your buyers say when they decide. You also see which of those things your homepage and pricing page never say. There is no charge and no deck.</p>
+        <div class="actions"><a class="btn" href="#start">Get the free 3-call teardown &rarr;</a></div>
+      </div>
+      <div class="stats" aria-label="Proof from in-house work at TopLeft">
+        <div class="stat"><div class="big">62.8<b>%</b></div><p>At TopLeft, 3 pages (demo, home and pricing) carried 62.8% of pipeline attribution.</p></div>
+        <div class="stat"><div class="big">10.9<b>:1</b></div><p>Live chat outperformed blog posts 10.9 to 1 on customer attribution.</p></div>
+        <div class="stat"><div class="big">50<b>+</b></div><p>I read more than 50 customer call and support transcripts and rewrote pages in buyers' own words.</p></div>
+        <div class="meta">In-house at TopLeft, a B2B SaaS company, August 2024 to February 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The recorders strip -->
+  <section class="strip">
+    <div class="wrap">
+      <p>The teardown works from the recordings you already have.</p>
+      <div class="chips"><span class="chip">Gong</span><span class="chip">Chorus</span><span class="chip">Fireflies</span><span class="chip">Zoom</span><span class="chip">HubSpot</span></div>
+    </div>
+  </section>
+
+  <!-- 3. Numbered steps -->
+  <section id="how">
+    <div class="wrap">
+      <div class="label">How the free teardown works</div>
+      <h2>Send 3 calls in and get 1 page back.</h2>
+      <p style="margin-top:14px">Here is how the teardown works, in 3 steps. It is not a survey. It is your buyers' own words.</p>
+      <div class="steps">
+        <div class="step"><span class="num">01.</span><h3>Send 3 recorded sales calls</h3><p>NDA on request; I delete the recordings after the teardown and reuse nothing from them without your yes.</p></div>
+        <div class="step"><span class="num">02.</span><h3>I read what buyers say when they decide</h3><p>I use their own words at the moment they decide or stall. I do not use a survey or a guess.</p></div>
+        <div class="step"><span class="num">03.</span><h3>You get 1 page back in 5 business days</h3><p>There is no charge and no deck. If the page is useful, we talk for 15 minutes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. What you get (framework section) -->
+  <section id="get">
+    <div class="wrap">
+      <div class="label">What is on the page</div>
+      <h2>Here is what your buyers say that your pages do not.</h2>
+      <p style="margin-top:14px">It is not a report full of charts. It is 1 page you can act on.</p>
+      <div class="cards">
+        <div class="card"><p>You get the 5 things your buyers say when they decide, word for word.</p></div>
+        <div class="card"><p>You see which of those things your homepage and pricing page never say.</p></div>
+        <div class="card"><p>You learn the role your buyers name as the person who said no.</p></div>
+        <div class="card"><p>You get a drafted "Who this is not for" section, so bad-fit demos turn themselves away.</p></div>
+        <div class="card"><p>You get 1 number to measure over the next 90 days.</p></div>
+      </div>
+      <p class="pull">No fake urgency, no fake scarcity, no invented proof.</p>
+    </div>
+  </section>
+
+  <!-- 5. Who this is for / What I do not do (written-channel rule for anything that sells) -->
+  <section id="fit">
+    <div class="wrap">
+      <div class="label">Who this is for</div>
+      <h2>Here is who the teardown is for.</h2>
+      <p style="margin-top:14px">It is not for every company. It is for the founders described below.</p>
+      <div class="contrast">
+        <div class="col bad">
+          <div class="colh">What I do not do</div>
+          <ul>
+            <li>I do not change button colors and call it a fix.</li>
+            <li>I do not guarantee a number of demos.</li>
+            <li>I do not reuse anything from your calls without your yes.</li>
+            <li>I do not send you a sales deck or a long proposal.</li>
+            <li>I do not use fake urgency, fake scarcity or invented proof.</li>
+          </ul>
+        </div>
+        <div class="col good">
+          <div class="colh">Who this is for</div>
+          <ul>
+            <li>You run a B2B SaaS company in IT or tech.</li>
+            <li>Your team has 5 to 50 people, and a founder still leads it.</li>
+            <li>Your site books demos, and you record your sales calls.</li>
+            <li>Your traffic is steady, but your demo count is flat or full of bad fits.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Callout -->
+  <section>
+    <div class="wrap">
+      <div class="callout">
+        <span class="kicker">2 problems</span>
+        <h2>The 2 problems I work on are traffic with a flat demo count, and demos that book but are the wrong fit.</h2>
+        <p>Here is what the teardown does about them. If either problem is yours, the teardown shows where it starts, on your own calls. It is not a guess about your market. It is what your buyers said.</p>
+        <div><a class="link" href="#start">Get the free teardown &rarr;</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. The method (alternating rows) -->
+  <section>
+    <div class="wrap">
+      <div class="label">The method</div>
+      <p>Here is the method behind every teardown.</p>
+      <div class="row first">
+        <div>
+          <span class="kicker">01. Find</span>
+          <h3>Find what buyers hesitate on</h3>
+          <p>Often the bottleneck is not on the page. It is underneath it, in the doubts buyers have and the reasons they give for not booking. They say these things out loud on your sales calls.</p>
+          <ul>
+            <li>I work from your own calls, not a survey or a persona.</li>
+            <li>I keep quotes word for word and check them against the transcript.</li>
+            <li>I reuse nothing from your calls without your yes.</li>
+          </ul>
+        </div>
+        <div class="example">
+          <div class="h"><span>Teardown, page 1</span><span>Example layout</span></div>
+          <div class="line"><span class="num">01.</span><p>I quote what a buyer said when they decided.</p></div>
+          <div class="line"><span class="num">02.</span><p>I name the doubt behind it in 1 line.</p></div>
+          <div class="line"><span class="num">03.</span><p>I show where your homepage answers it, or does not.</p></div>
+          <div class="line"><span class="num">04.</span><p>I name the role that said no, as buyers name it.</p></div>
+          <div class="meta">This is the layout only. Every line on a real teardown comes from your calls.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <span class="kicker">02. Place</span>
+          <h3>Say it on the pages that carry pipeline</h3>
+          <p>At TopLeft, 3 pages (demo, home and pricing) carried 62.8% of pipeline attribution. Those are the pages that should answer what your buyers hesitate on.</p>
+          <ul>
+            <li>We start with your homepage and pricing page.</li>
+            <li>You see your current lines next to the rewritten ones, so you can judge them yourself.</li>
+            <li>We measure demos booked in your CRM, not traffic.</li>
+          </ul>
+        </div>
+        <div class="example">
+          <div class="h"><span>Homepage line</span><span>Example layout</span></div>
+          <div class="vs">
+            <div class="bad"><span class="t">&#10005; Now</span><p>This is your current headline as it reads today.</p></div>
+            <div class="good"><span class="t"><i>&#10003;</i> Rewritten</span><p>This is the same promise in the words your buyers used.</p></div>
+          </div>
+          <div class="meta">This is the layout only. Real lines come from your page and your calls.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <span class="kicker">03. Filter</span>
+          <h3>Turn the wrong-fit demos away</h3>
+          <p>A drafted "Who this is not for" section tells the wrong buyers before they book. That way, the demos that do book are worth taking.</p>
+          <ul>
+            <li>The section is built to turn bad-fit buyers away before they book.</li>
+            <li>We write down 1 number to measure over 90 days.</li>
+            <li>The number comes from your CRM, so you can check it yourself.</li>
+          </ul>
+        </div>
+        <div class="example">
+          <div class="h"><span>Who this is not for</span><span>Example layout</span></div>
+          <div class="line"><span class="x">&#10005;</span><p>This is a buyer your sales team says should not have booked.</p></div>
+          <div class="line"><span class="x">&#10005;</span><p>This is a deal size or stage you do not serve.</p></div>
+          <div class="line"><span class="ok">&#10003;</span><p>This is the buyer your calls show you close.</p></div>
+          <div class="meta">This is the layout only. It is drafted from your calls and approved by you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. The letter -->
+  <section id="why">
+    <div class="wrap letter">
+      <div class="label">Why the teardown is free</div>
+      <h2 style="margin-bottom:22px">The useful information is in <em>your own calls.</em></h2>
+      <p>Here is where this method comes from. I spent 18 months at TopLeft, a B2B SaaS company. I read more than 50 customer call and support transcripts and rewrote pages from buyers' own words.</p>
+      <p>I also built a multi-touch attribution report from 12 HubSpot report categories and more than 100 URLs. It showed that 3 pages (demo, home and pricing) carried 62.8% of pipeline attribution.</p>
+      <p>Then I built Contextual Content Engine alone. It is a production platform on the Claude API. It turns a company's HubSpot attribution data and sales-call transcripts into page copy, and every quote is checked against what a buyer said.</p>
+      <p>No paid customer has closed yet, which is why the teardown is free and you judge it on your own calls. It is not a sales pitch. It is a page you keep. If the page is useful, we talk for 15 minutes. If it is not useful, you keep the page anyway.</p>
+      <p class="sig">Jonathan Griffiths</p>
+    </div>
+  </section>
+
+  <!-- 9. Read first -->
+  <section id="reads">
+    <div class="wrap">
+      <div class="label">Read first</div>
+      <h2>Read how I think before you send anything.</h2>
+      <p style="margin-top:14px">Here is 1 article that shows how I work. It is not a sales page. It is how I think about buyers.</p>
+      <!-- Review 2 Oct 2026: the conversion-systems and UI/UX Medium pieces stay off this page until their flagged
+           lines are fixed (banned words, unsourced 32% / 27%, "studying behavioral psychology"). -->
+      <p><a class="link" href="https://medium.com/@amazingworkaholism" target="_blank" rel="noopener">Read "Where the triggers came from" and my other articles on Medium &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- 10. The one CTA block -->
+  <div class="cta" id="start">
+    <h2>Send 3 calls and get 1 page back in 5 business days.</h2>
+    <p>There is no charge and no deck. If the page is useful, we talk for 15 minutes.</p>
+    <div class="go">
+      <a href="https://contextual-content-engine.com/demo" target="_blank" rel="noopener">Request the free teardown &rarr;</a>
+      <a href="https://www.calendly.com/jonathan-christopher-griffiths" target="_blank" rel="noopener">Or book 15 minutes on Calendly &rarr;</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="lockup" href="#top" aria-label="Griffiths LLC"><img src="favicon.svg" alt=""><span>Griffiths LLC</span></a>
+    <p class="promise">No fake urgency, no fake scarcity, no invented proof.</p>
+    <div class="cols">
+      <a href="https://contextual-content-engine.com" target="_blank" rel="noopener">contextual-content-engine.com</a>
+      <a href="https://medium.com/@amazingworkaholism" target="_blank" rel="noopener">Medium</a>
+      <a href="https://www.calendly.com/jonathan-christopher-griffiths" target="_blank" rel="noopener">Book 15 minutes</a>
+    </div>
+    <div class="meta">&copy; 2026 Griffiths LLC</div>
+  </div>
+</footer>
+
+<script>
+  // 3px Burnt Orange reading-progress bar (brand pattern)
+  var bar = document.getElementById('progress');
+  addEventListener('scroll', function () {
+    var h = document.documentElement;
+    bar.style.width = (100 * h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
